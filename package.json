@@ -1,0 +1,50 @@
+{
+  "name": "martians-are-your-frens-contracts",
+  "description": "Smart Contracts of Martians Are Your Frens",
+  "private": true,
+  "version": "0.0.1",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.0"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.1.0",
+    "@nomiclabs/hardhat-etherscan": "^3.1.0",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/test-helpers": "^0.5.15",
+    "@types/mocha": "^9.0.0",
+    "chai": "^4.3.6",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
+    "erc721a": "^4.1.0",
+    "eslint": "^8.7.0",
+    "eslint-plugin-mocha": "^10.0.3",
+    "eslint-plugin-node": "^11.1.0",
+    "ethereum-waffle": "^3.4.4",
+    "ethers": "^5.6.9",
+    "hardhat": "2.10.1",
+    "hardhat-deploy": "^0.11.11",
+    "hardhat-deploy-ethers": "^0.3.0-beta.13",
+    "hardhat-gas-reporter": "^1.0.8",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.2.32",
+    "mocha": "^10.0.0",
+    "mocha-chai-jest-snapshot": "^1.1.4",
+    "prettier": "^2.7.1",
+    "prettier-plugin-solidity": "^1.0.0-dev.23",
+    "solidity-coverage": "^0.7.21",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "yarn compile && mocha --bail --recursive test",
+    "gas": "cross-env REPORT_GAS=true hardhat test",
+    "coverage": "hardhat coverage",
+    "lint": "yarn lint:eslint & yarn lint:prettier",
+    "lint:eslint": "eslint --ignore-path .gitignore . --fix",
+    "lint:prettier": "yarn prettier --write .",
+    "merketree": "node scripts/merketree.js",
+    "deploy:test": "hardhat run scripts/deploy.js --network rinkeby",
+    "verify:etherscan": "hardhat verify --network rinkeby --constructor-args ./scripts/arguments.js 0xdEEAA2FE0bCC7f56D586407Cd6abF308eA5eFe38"
+  }
+}
